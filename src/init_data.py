@@ -1,5 +1,5 @@
 import random
-def InitRandomMatrix(amount_point, amount_relationship):
+def init_random_matrix(amount_point, amount_relationship):
     amount_relationship_init = 0
     matrix = []
     check_list=[]
@@ -18,9 +18,11 @@ def InitRandomMatrix(amount_point, amount_relationship):
     return matrix
 
 
+def init_point_position(amount_point):
+    list_point = []
+    list_position = []
+    list_point.append([0, 0])
 
-
-def InitPointPosition(amount_point):
     if amount_point >= 3 and amount_point <= 6:
         distance = 350
         epxilon = 2.5
@@ -39,17 +41,17 @@ def InitPointPosition(amount_point):
     elif amount_point >= 23 and amount_point <= 26:
         distance = 17
         epxilon = 6
-    else:
+    elif amount_point >= 27 and amount_point <= 30:
         distance = 13
         epxilon = 3
+    elif amount_point >= 31 and amount_point <= 34:
+        distance = 10
+        epxilon = 2
+    else:
+        distance = 5
+        epxilon = 2
     distance_min_ratio = int((amount_point+2)/4) if (amount_point-2) % 4 != 0 else int((amount_point+2)/4)-1
 
-    print(distance_min_ratio)
-
-    list_point = []
-    list_position = []
-
-    list_point.append([0, 0])
 
     for i in range(distance_min_ratio):
         list_point.append([-(distance_min_ratio-i), i]) if i != 0 else \
@@ -86,7 +88,7 @@ def InitPointPosition(amount_point):
     return list_position
 
 
-def InitLinePoints(a, b):
+def init_line_points(a, b):
     # Top (OK) -> Right (OK) -> Bottom (OK)-> Left (OK)
     a1 = [[a[0]+26, a[1]], [a[0]+50, a[1]+12], [a[0]+26, a[1]+26], [a[0], a[1]+12]]
     b1 = [[b[0]+26, b[1]], [b[0]+50, b[1]+12], [b[0]+26, b[1]+26], [b[0], b[1]+12]]
@@ -110,3 +112,4 @@ def InitLinePoints(a, b):
             return [a1[1], b1[3]]
         else:
             return [a1[3], b1[1]]
+
